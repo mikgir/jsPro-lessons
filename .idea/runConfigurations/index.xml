@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="index" type="JavascriptDebugType" uri="http://localhost:63342/jsPro-lessons/src/index.html" useBuiltInWebServerPort="true">
+    <method v="2">
+      <option name="LaunchBrowser.Before.Run" url="http://localhost:63342/jsPro-lessons/src/index.html" withDebugger="true" />
+    </method>
+  </configuration>
+</component>
