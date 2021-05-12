@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>JS Lessons</title>
-    <link rel="stylesheet" href="styles/style.scss">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 <header class="header">
-    <button class="cart-button" type="button">Корзина</button>
+    <div class="header__menu wrapper">
+        <div class="header__logo">
+            <h3 class="logo__item">GM-develop</h3>
+        </div>
+        <button class="cart-button" type="button"><i class="fas fa-shopping-cart"></i> Корзина</button>
+    </div>
 </header>
 <main>
-    <div class="goods-list"></div>
+    <div class="goods-list wrapper"></div>
 </main>
 
 <script src="js/app.js"></script>
