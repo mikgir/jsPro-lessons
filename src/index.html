@@ -16,9 +16,9 @@
     </div>
 </header>
 <main>
-    <div class="goods-list wrapper"></div>
+    <div id="goods" class="goods-list wrapper"></div>
     <div class="cart modal">
-        <div class="cart__goods"></div>
+        <div id="cart" class="cart__goods"></div>
     </div>
 </main>
 <footer class="footer">
@@ -27,7 +27,9 @@
     </div>
 </footer>
 
-<script src="js/goods.js"></script>
+<script src="constants/constants.js"></script>
+<script src="utils/LocalStorageUtil.js"></script>
+
 <script src="js/GoodItem.js"></script>
 <script src="js/CartItem.js"></script>
 <script src="js/GoodsList.js"></script>

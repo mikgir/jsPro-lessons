@@ -1,21 +1,26 @@
-class CartList extends GoogsList {
-  constructor (...args) {
-    super(...args)
+class CartList {
+  constructor () {
+    this.goodsCart = [];
+  }
+  handlerClear () {
+    GOODS_CART.innerHTML = '';
   }
 
   addGood () {
-
-  }
-
-  removeGood () {
-
-  }
-
-  render () {
-    // очищаем корзину
+    const productsStore = localStorageUtil.getProducts();
     let cartHtml = '';
+    let totalCost = 0;
+    this.goodsCart = productsStore;
+    this.goodsCart.forEach(item => {
+      const cartItem = new CartItem(item.id, item.img, item.title, item.price);
+      cartHtml += cartItem.render(cartItem.addQuantity());
+
+    });
+    GOODS_CART.innerHTML = cartHtml;
+
+  }
+  removeGood () {
 
   }
 }
 
-const cartList = new CartList();
