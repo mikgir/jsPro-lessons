@@ -6,7 +6,7 @@ class GoodsList {
     this.labelRemove = 'Delete';
   }
   handlerLocalStore (element, id) {
-    const {pushProduct, products} = localStorageUtil.putProducts (id);
+    const {pushProduct, products} = localStorageUtil.putProducts(id);
 
     if (pushProduct) {
       element.classList.add(this.classNameActive);
@@ -17,27 +17,43 @@ class GoodsList {
     }
   }
 
-  fetchGoods () {
-     makeGETRequest('GET', API_URL)
-     .then(data => {
-       const productsStore = localStorageUtil.getProducts();
-       let listHtml = '' ;
-       data.forEach(good => {
-         const goodItem = new GoodItem(good.id, good.img, good.title, good.price);
-         listHtml += goodItem.render();
-       });
-       GOODS_LIST.innerHTML = listHtml;
-     })
-     .catch(err => console.log(err))
+  render () {
+    const productsStore = localStorageUtil.getProducts();
+    let listHtml = '' ;
+    this.goods.forEach(({id, img, title, price}) => {
+      let activeClass = '';
+      let activeText = '';
+      // const goodItem = new GoodItem(this.id, this.img, this.title, this.price);
+
+      if (productsStore.indexOf(id) === -1) {
+        activeText = this.labelAdd;
+      } else {
+        activeClass = ' ' + this.classNameActive;
+        activeText = this.labelRemove;
+      }
+      listHtml += `
+            <div class="goods-item">
+                <img src="${img}" alt="${title} photo">
+                <h3>${title}</h3>
+                <div class="goods-item__acts">
+                    <p>Price <span>$ </span>${price}</p>
+                    <button type="submit" class="goods-item__btn${activeClass}" onclick="list.handlerLocalStore(this, '${id}');">
+                       ${activeText}
+                    </button>
+                </div>                
+            </div>`
+    });
+    GOODS_LIST.innerHTML = listHtml;
   }
-  // render () {
-  //  let listHtml = '' ;
-  //  this.goods.forEach(good => {
-  //    const goodItem = new GoodItem(good.id_product, good.img, good.product_name, good.price);
-  //    listHtml += goodItem.render();
-  //  });
-  //  document.querySelector('.goods-list').innerHTML = listHtml;
-  // }
+  fetchGoods () {
+    makeGETRequest('GET', API_URL)
+      .then(data => {
+        this.goods = data;
+        this.render();
+
+      })
+      .catch(err => console.log(err))
+  }
   getTotalCost () {
     let totalCoast = 0;
     this.goods.forEach(good => totalCoast += good.price);
