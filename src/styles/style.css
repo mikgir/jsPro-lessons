@@ -12,6 +12,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
+    position: relative;
 }
 
 .header {
@@ -30,7 +31,11 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-.cart-button {
+.cart-display {
+    position: relative;
+}
+.cart-button,
+.search__btn {
     border: none;
     outline: none;
     cursor: pointer;
@@ -45,6 +50,26 @@ body {
 .cart-button .fas {
     font-size: 1rem;
     color: aliceblue;
+}
+
+.cart-display__quantity {
+    position: absolute;
+    top: -10px;
+    right: 1px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    text-align: center;
+
+}
+.search__input {
+    border: none;
+    outline: none;
+    width: 250px;
+    height: 40px;
+
 }
 .goods-list {
     height: 100vh;
@@ -67,6 +92,7 @@ body {
 }
 .goods-item img {
     width: 100%;
+    min-width: 200px;
     height: auto;
 }
 .goods-item h3 {
@@ -81,14 +107,13 @@ body {
     justify-content: space-between;
     align-items: flex-start;
 }
-.goods-item__quantity label {
-    font-size: small;
-}
+
 .goods-item p {
     font-size: 1.2rem;
     color: red;
 }
-.goods-item__btn {
+.goods-item__btn,
+.form__btn {
     border: none;
     outline: none;
     cursor: pointer;
@@ -104,18 +129,72 @@ body {
     background-color: red;
 }
 .modal {
+    position: absolute;
+    top: 5%;
+    left: 5%;
     width: 90%;
-    height: 90vh;
+    padding: 4%;
     text-align: center;
+    background: linear-gradient(45deg, rgba(12,5,3, 0.5) 0%, rgba(52,37,129, 0.5) 100%);
+    box-shadow: 5px 5px 11px 2px rgba(156,156,156,0.86);
+    /*z-index: 10;*/
+}
+.hidden {
+    display: none;
+}
+.close__btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+
+}
+.cart__wrapper {
+    width: 100%;
+    height: 90vh;
+    margin: 0 auto;
+    background-color: aliceblue;
+    opacity: 1;
 }
 .cart__goods {
+    margin: 10px auto;
     width: 100%;
-    height: 100%;
     display: grid;
     grid-template-columns: repeat(4, minmax(250px, 1fr));
     grid-gap: 30px;
     justify-items: center;
+    padding: 10px;
 }
+
+.form-container {
+    margin: 60px auto;
+    width: 80%;
+}
+.user__form {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.user__form label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 5px 0;
+}
+.user__form input {
+    width: 350px;
+    height: 50px;
+    padding: 5px 15px;
+}
+textarea {
+    width: 350px;
+    height: 350px;
+    padding: 15px;
+}
+
 .footer {
     width: 100%;
     height: 150px;

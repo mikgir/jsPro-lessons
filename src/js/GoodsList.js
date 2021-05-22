@@ -1,6 +1,7 @@
 class GoodsList {
   constructor () {
     this.goods = [];
+    this.filteredGoods = [];
     this.classNameActive = 'goods-item__btn_active';
     this.labelAdd = 'Add to cart';
     this.labelRemove = 'Delete';
@@ -11,16 +12,34 @@ class GoodsList {
     if (pushProduct) {
       element.classList.add(this.classNameActive);
       element.innerText = this.labelRemove;
+      cartList.render();
     } else {
       element.classList.remove(this.classNameActive);
       element.innerText = this.labelAdd;
+      cartList.render();
     }
+    function renderQuantity () {
+      if (products.length !== 0) {
+        CART_QUANTITY.classList.remove('hidden')
+        CART_QUANTITY.innerText = products.length;
+      } else {
+        CART_QUANTITY.classList.add('hidden')
+        CART_QUANTITY.innerText = 0;
+      }
+    }
+    renderQuantity();
+  }
+
+  filterGoods(value) {
+    const regexp = new RegExp(value, 'i');
+    this.filteredGoods = this.goods.filter(good => regexp.test(good.title));
+    this.render();
   }
 
   render () {
     const productsStore = localStorageUtil.getProducts();
     let listHtml = '' ;
-    this.goods.forEach(({id, img, title, price}) => {
+    this.filteredGoods.forEach(({id, img, title, price}) => {
       let activeClass = '';
       let activeText = '';
       // const goodItem = new GoodItem(this.id, this.img, this.title, this.price);
@@ -49,15 +68,11 @@ class GoodsList {
     makeGETRequest('GET', API_URL)
       .then(data => {
         this.goods = data;
+        this.filteredGoods = data;
         this.render();
 
       })
       .catch(err => console.log(err))
-  }
-  getTotalCost () {
-    let totalCoast = 0;
-    this.goods.forEach(good => totalCoast += good.price);
-    console.log(totalCoast);
   }
 }
 
@@ -82,8 +97,14 @@ list.fetchGoods();
 // list.render();
 // list.getTotalCost();
 
+SEARCH_BTN.addEventListener('click', event => {
+  const value = SEARCH_INPUT.value;
+  list.filterGoods(value);
+});
 
-
-
+SEARCH_INPUT.addEventListener('keydown', event => {
+  const value = SEARCH_INPUT.value;
+  list.filterGoods(value);
+});
 
 
