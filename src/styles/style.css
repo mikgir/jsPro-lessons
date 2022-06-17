@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap');
+
+html {
+    box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px solid #000;
+    background-color: #aeaeae;
+}
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.header__menu {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cart-display {
+    position: relative;
+}
+.cart-button,
+.search__btn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 120px;
+    height: 40px;
+    padding: 10px 20px;
+    background-color: blue;
+    border-radius: 50px;
+    color: aliceblue;
+    box-shadow: 2px 1px 2px 2px rgba(9,4,72,0.95);
+}
+.cart-button .fas {
+    font-size: 1rem;
+    color: aliceblue;
+}
+
+.cart-display__quantity {
+    position: absolute;
+    top: -10px;
+    right: 1px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    text-align: center;
+
+}
+.search__input {
+    border: none;
+    outline: none;
+    width: 250px;
+    height: 40px;
+
+}
+.goods-list {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
+    grid-gap: 30px;
+    justify-items: center;
+}
+.goods-item {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: calc(1200px / 4 - 30px);
+    height: fit-content;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 5px 5px 11px 2px rgba(156,156,156,0.86);
+}
+.goods-item img {
+    width: 100%;
+    min-width: 200px;
+    height: auto;
+}
+.goods-item h3 {
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+.goods-item__acts {
+    width: 100%;
+    display: flex;
+    margin: 20px auto;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.goods-item p {
+    font-size: 1.2rem;
+    color: red;
+}
+.goods-item__btn,
+.form__btn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 110px;
+    height: 30px;
+    /*padding: 12px;*/
+    background-color: blue;
+    border-radius: 50px;
+    color: aliceblue;
+    box-shadow: 2px 1px 2px 2px rgba(9,4,72,0.95);
+}
+.goods-item__btn_active {
+    background-color: red;
+}
+.modal {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    padding: 4%;
+    text-align: center;
+    background: linear-gradient(45deg, rgba(12,5,3, 0.5) 0%, rgba(52,37,129, 0.5) 100%);
+    box-shadow: 5px 5px 11px 2px rgba(156,156,156,0.86);
+    /*z-index: 10;*/
+}
+.hidden {
+    display: none;
+}
+.close__btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+
+}
+.cart__wrapper {
+    width: 100%;
+    height: 90vh;
+    margin: 0 auto;
+    background-color: aliceblue;
+    opacity: 1;
+}
+.cart__goods {
+    margin: 10px auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
+    grid-gap: 30px;
+    justify-items: center;
+    padding: 10px;
+}
+
+.form-container {
+    margin: 60px auto;
+    width: 80%;
+}
+.user__form {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.user__form label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 5px 0;
+}
+.user__form input {
+    width: 350px;
+    height: 50px;
+    padding: 5px 15px;
+}
+textarea {
+    width: 350px;
+    height: 350px;
+    padding: 15px;
+}
+
+.footer {
+    width: 100%;
+    height: 150px;
+    border-top: 1px solid #000;
+    background-color: #aeaeae;
+}
+.footer__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
